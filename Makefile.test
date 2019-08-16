@@ -1,0 +1,17 @@
+OBJ:=cmd_parser_test.o
+CFLAGS:=-fPIC -c -Wall -O -g
+TARGET=cmd_parser_test
+LIB=-lcmd_parser
+
+all:$(TARGET)
+
+$(TARGET):$(OBJ)
+	$(CC) -o $@ $(OBJ) -L./ $(LIB) 
+
+$(OBJ):%.o:%.c
+	$(CC) $(CFLAGS) $< -o $@
+
+.PHONY:clean
+clean:
+	rm -rf $(OBJ) $(TARGET)
+
